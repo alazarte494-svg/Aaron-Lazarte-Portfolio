@@ -1,0 +1,272 @@
+/* ===== GLOBAL VARIABLES & RESET ===== */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+:root {
+  --lime: #CCFF00;
+  --lime-dim: rgba(204, 255, 0, 0.12);
+  --lime-mid: rgba(204, 255, 0, 0.35);
+  --dark-teal: #0B2B1F;
+  --white: #FFFFFF;
+  --soft-gray: #F5F5F5;
+  --dark-text: #111111;
+  --mid-gray: #888888;
+  --border: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --bg-main: #080f0a;
+  --bg-dark: #050c07;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-main);
+  color: var(--white);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Hide default cursor on all interactive elements */
+a, button, input, textarea, select, [role="button"], [onclick] {
+  cursor: none !important;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--lime); border-radius: 4px; }
+
+/* ===== SELECTION ===== */
+::selection { background: var(--lime); color: var(--dark-text); }
+
+/* ===== SHARED SECTION ELEMENTS ===== */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(204, 255, 0, 0.2), transparent);
+  margin: 0 5vw;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  color: var(--lime);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--white);
+}
+
+.section-title .accent {
+  color: var(--lime);
+}
+
+.section-header {
+  margin-bottom: 4rem;
+}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===== SHARED BUTTON STYLES ===== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--lime);
+  color: var(--dark-text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 14px 30px;
+  border-radius: 100px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+  cursor: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(204, 255, 0, 0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  padding: 14px 26px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color 0.3s, color 0.3s;
+  cursor: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+/* ===== KEYFRAMES ===== */
+@keyframes fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  to { opacity: 1; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.7; }
+}
+
+@keyframes scroll-drop {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+@keyframes shimmer {
+  to { left: 200%; }
+}
+
+@keyframes shardFly {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--tx, 100px), var(--ty, -80px)) rotate(var(--rot, 45deg)); opacity: 0; }
+}
+
+@keyframes paperTear {
+  0% { transform: rotate(0deg) scale(1); opacity: 1; clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); }
+  20% { transform: rotate(2deg) scale(1.02); clip-path: polygon(0% 0%, 100% 2%, 98% 98%, 2% 100%); }
+  50% { transform: rotate(-4deg) scale(0.98); clip-path: polygon(5% 0%, 95% 5%, 90% 95%, 10% 100%); filter: brightness(1.2); }
+  75% { transform: rotate(3deg) scale(0.95); clip-path: polygon(10% 10%, 90% 8%, 85% 92%, 15% 90%); opacity: 0.7; }
+  100% { transform: rotate(0deg) scale(1); clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); opacity: 1; }
+}
+
+@keyframes rippleGlow {
+  0% { box-shadow: 0 0 0 0 rgba(204, 255, 0, 0.7), 0 0 0 0 rgba(204, 255, 0, 0.4); }
+  50% { box-shadow: 0 0 0 20px rgba(204, 255, 0, 0.2), 0 0 0 40px rgba(204, 255, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(204, 255, 0, 0), 0 0 0 0 rgba(204, 255, 0, 0); }
+}
+/* ===== GLOBAL STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Enable smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Add scroll margin to all sections */
+section {
+  scroll-margin-top: 80px;
+  display: block;
+}
+
+/* Body styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #050c07;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button {
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0f0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(204, 255, 0, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(204, 255, 0, 0.5);
+}
+/* Force smooth scroll on all anchor clicks */
+html {
+  scroll-behavior: smooth !important;
+}
+
+/* Add this to prevent navbar overlap when scrolling to sections */
+:target {
+  scroll-margin-top: 80px;
+}
+/* Force smooth scrolling for all anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fix for navbar covering sections when scrolling */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Alternative method using :target pseudo-class */
+:target {
+  scroll-margin-top: 80px;
+}

@@ -1,0 +1,345 @@
+/* ===== PROJECTS ===== */
+.projects-section {
+  padding: 120px 5vw;
+}
+
+.projects-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Project item */
+.project-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 520px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-item:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.project-item.reverse {
+  direction: rtl;
+}
+
+.project-item.reverse > * {
+  direction: ltr;
+}
+
+/* Visual side - OPTIMIZED */
+.project-visual {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(11, 43, 31, 0.5), rgba(8, 15, 10, 0.9));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+}
+
+.project-img-placeholder {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Image container - BEST QUALITY */
+.project-image-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Main image - NO STRETCHING, HD QUALITY */
+.project-img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Secondary image hover effect */
+.project-img-secondary {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.project-item:hover .project-img-secondary {
+  opacity: 1;
+}
+
+.project-item:hover .project-img {
+  opacity: 0.7;
+}
+
+/* Fallback icon styling */
+.project-img-icon {
+  font-size: 4rem;
+  background: rgba(204, 255, 0, 0.08);
+  border: 1px solid rgba(204, 255, 0, 0.15);
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s var(--ease-out), background 0.4s;
+}
+
+.proj-num {
+  font-family: var(--font-display);
+  font-size: 8rem;
+  font-weight: 800;
+  color: rgba(204, 255, 0, 0.04);
+  line-height: 1;
+  user-select: none;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  transition: color 0.4s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.project-item:hover .proj-num {
+  color: rgba(204, 255, 0, 0.08);
+}
+
+.project-item:hover .project-img-icon {
+  transform: scale(1.08);
+  background: rgba(204, 255, 0, 0.14);
+}
+
+.project-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(204, 255, 0, 0.025));
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.project-item:hover .project-visual-overlay {
+  opacity: 1;
+}
+
+/* Info side */
+.project-info {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.project-index {
+  font-size: 0.65rem;
+  color: var(--lime);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  transition: color 0.3s;
+}
+
+.project-item:hover .project-title {
+  color: var(--lime);
+}
+
+.project-desc {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 2.5rem;
+}
+
+.tech-badge {
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--lime);
+  background: var(--lime-dim);
+  border: 1px solid rgba(204, 255, 0, 0.2);
+  padding: 4px 12px;
+  border-radius: 100px;
+  transition: background 0.3s;
+}
+
+.tech-badge:hover {
+  background: rgba(204, 255, 0, 0.18);
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-proj-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--lime);
+  color: var(--dark-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 100px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-proj-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(204, 255, 0, 0.3);
+}
+
+.btn-proj-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.78rem;
+  padding: 10px 22px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.btn-proj-secondary:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .project-item {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .project-item.reverse {
+    direction: ltr;
+  }
+
+  .project-visual {
+    min-height: 380px;
+    padding: 1.5rem;
+  }
+
+  .project-info {
+    padding: 2.5rem 2rem;
+  }
+  
+  .project-img {
+    max-height: 380px;
+  }
+  
+  .project-img-secondary {
+    max-height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-info {
+    padding: 2rem 1.5rem;
+  }
+  
+  .project-visual {
+    min-height: 280px;
+    padding: 1rem;
+  }
+  
+  .project-img {
+    max-height: 280px;
+  }
+  
+  .project-img-secondary {
+    max-height: 280px;
+  }
+  
+  .proj-num {
+    font-size: 5rem;
+    bottom: 5px;
+    right: 10px;
+  }
+}
+
+/* Optional: Add loading animation for images */
+.project-img {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
